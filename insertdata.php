@@ -14,17 +14,16 @@ if (mysqli_connect_error()) {
 }
 
 // Fetch data from POST request
-$id = $_POST['id'];
-
 $name = $_POST['name'];
 $domain = $_POST['domain'];
 $propulsion = $_POST['propulsion'];
+$diet = $_POST['diet'];
 
-$sql = "INSERT INTO animals (name, domain, propulsion) VALUES (?, ?, ?)";
+$sql = "INSERT INTO animals (name, domain, propulsion, diet) VALUES (?, ?, ?, ?)";
 $stmt = $link->prepare($sql);
 
 // s for string
-$stmt->bind_param("sss", $name, $domain, $propulsion);
+$stmt->bind_param("ssss", $name, $domain, $propulsion, $diet);
 $result = $stmt->execute();
 
 if ($result) {
